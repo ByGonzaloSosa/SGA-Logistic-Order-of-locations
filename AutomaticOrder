@@ -1,0 +1,46 @@
+print(" BIENVENIDO AL SISTEMA DE ORDENAMIENTO DE PASILLOS  \n")
+
+nave = int(input('-EN QUE NAVE ESTAMOS: '))
+abnave = input('-A o B: ')
+pasillo1 = int(input('-PRIMER PASILLO A ORDENAR: '))
+pasillo2 = int(input('-SEGUNDO PASILLO A ORDENAR: '))
+posicion1 = int(input('-POSICION DEL PRIMER PALLET DEL PRIMER PASILLO: '))
+posicion1final = int(input('-POSICION DEL ULTIMO PALLET DEL PRIMER PASILLO: '))
+posicion2 = int(input('-POSICION DEL PRIMER PALLET DEL SEGUNDO PASILLO: '))
+posicion2final = int(input('-POSICION DEL ULTIMO PALLET DEL SEGUNDO PASILLO: '))
+
+print('\n--------------------------------------------------------\n')
+    
+def ordencustom(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave):    
+    #Compara posicion inicial o final para ver si el orden es positivo o negativo#
+    if posicion1final > posicion1:
+        ordenauto(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave)
+        
+    else:
+        ordenrevauto(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave)
+    
+    
+    
+def ordenrevauto(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave):
+    #Bucle desde posicion inicial a final en sentido negativo#
+    #Cada uno de los pasillos van hasta la ultima posicion a pesar de que el otro termine#
+    while posicion1 >= posicion1final or posicion2 >= posicion2final:
+        if posicion1 >= posicion1final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo1,posicion1))
+            posicion1 = posicion1 - 1
+        if posicion2 >= posicion2final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo2,posicion2))
+            posicion2 = posicion2 - 1
+
+def ordenauto(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave):
+    #Bucle desde posicion inicial a final en sentido positivo#
+    #Cada uno de los pasillos van hasta la ultima posicion a pesar de que el otro termine#
+    while posicion1 <= posicion1final or posicion2 <= posicion2final:
+        if posicion1  <= posicion1final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo1,posicion1))
+            posicion1 = posicion1 + 1
+        if posicion2 <= posicion2final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo2,posicion2))
+            posicion2 = posicion2 + 1
+            
+ordencustom(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave)
