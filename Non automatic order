@@ -1,39 +1,54 @@
 def ordenrev(pasillo1,pasillo2,posicion):
     
-    while posicion > 9:
-        print('07A.0%d.%d' % (pasillo1,posicion))
-        print('07A.0%d.%d' % (pasillo2,posicion))
+    while posicion >= 1:
+        print('06B.%02d.%02d' % (pasillo1,posicion))
+        print('06B.%02d.%02d' % (pasillo2,posicion))
         posicion = posicion - 1
-    while posicion > 0:
-        print('07A.0%d.0%d' % (pasillo1,posicion))
-        print('07A.0%d.0%d' % (pasillo2,posicion))
-        posicion = posicion - 1
+    
 
 def orden(pasillo1,pasillo2,posicion):
     
-    while posicion < 10:
-        print('06A.%d.0%d' % (pasillo1,posicion))
-        print('06A.0%d.0%d' % (pasillo2,posicion))
-        posicion = posicion + 1
-    while posicion <= 12:
-        print('06A.%d.%d' % (pasillo1,posicion))
-        print('06A.0%d.%d' % (pasillo2,posicion))
+    while posicion <= 60:
+        print('06B.%02d.%02d' % (pasillo1,posicion))
+        print('06B.%02d.%02d' % (pasillo2,posicion))
         posicion = posicion + 1
         
 def ordenindividual(pasillo1,posicion):
     
     while posicion < 10:
-        print('06A.%d.0%d' % (pasillo1,posicion))
+        print('06A.%02d.%02d' % (pasillo1,posicion))
         posicion = posicion + 1
     while posicion <= 30:
-        print('06A.%d.%d' % (pasillo1,posicion))
+        print('06A.%02d.%02d' % (pasillo1,posicion))
         posicion = posicion + 1 
         
 def ordenreversoindividual(pasillo1,posicion):
     
     while posicion > 9:
-        print('06A.%d.0%d' % (pasillo1,posicion))
+        print('06A.%02d.0%02d' % (pasillo1,posicion))
         posicion = posicion - 1
     while posicion >= 1:
-        print('06A.%d.%d' % (pasillo1,posicion))
+        print('06A.%02d.%02d' % (pasillo1,posicion))
         posicion = posicion - 1
+        
+def ordenrevauto(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave):
+    #Bucle desde posicion inicial a final en sentido negativo#
+    #Cada uno de los pasillos van hasta la ultima posicion a pesar de que el otro termine#
+    while posicion1 >= posicion1final or posicion2 >= posicion2final:
+        if posicion1 >= posicion1final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo1,posicion1))
+            posicion1 = posicion1 - 1
+        if posicion2 >= posicion2final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo2,posicion2))
+            posicion2 = posicion2 - 1        
+
+def ordenauto(pasillo1,pasillo2,posicion1,posicion2,posicion1final,posicion2final,nave,abnave):
+    #Bucle desde posicion inicial a final en sentido positivo#
+    #Cada uno de los pasillos van hasta la ultima posicion a pesar de que el otro termine#
+    while posicion1 <= posicion1final or posicion2 <= posicion2final:
+        if posicion1  <= posicion1final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo1,posicion1))
+            posicion1 = posicion1 + 1
+        if posicion2 <= posicion2final:
+            print('%02d%s.%02d.%02d' % (nave,abnave,pasillo2,posicion2))
+            posicion2 = posicion2 + 1
